@@ -47,6 +47,61 @@ function createResultObject(transaction) {
   return result;
 }
 
+
+/***************** Token *********************************/
+
+router.get('/token', function (req, res) {
+  gateway.clientToken.generate({}, function (err, response) {
+     response.success;
+     // true
+
+     response
+  });
+});
+
+
+/***************** customer info **************************/
+router.get('/customer/new', function (req, res) {
+ 
+
+
+  gateway.customer.create({
+    firstName: req.params.firstName,
+    lastName: req.params.lastName,
+    company: req.params.company,
+    email: req.params.email,
+  }, function (err, result) {
+  result.success;
+  // true
+
+  result.customer.id;
+  // e.g. 494019
+});
+});
+
+
+
+router.get('/customer/find', function (req, res) {
+ 
+gateway.customer.find(req.params.customerId, function(err, customer) {
+
+  result.success;
+  // true
+
+  result.customer;
+  // e.g. 494019
+});
+
+});
+
+
+
+
+
+
+
+/***************** transatcion **************************/
+
 router.get('/', function (req, res) {
   res.redirect('/checkouts/new');
 });
