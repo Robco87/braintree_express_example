@@ -66,10 +66,10 @@ router.get('/customer/new', function (req, res) {
 
 
   gateway.customer.create({
-    firstName: req.params.firstName,
-    lastName: req.params.lastName,
-    company: req.params.company,
-    email: req.params.email,
+    firstName: req.query.firstName,
+    lastName: req.query.lastName,
+    company: req.query.company,
+    email: req.query.email,
   }, function (err, result) {
   result.success;
   // true
