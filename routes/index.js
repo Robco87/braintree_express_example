@@ -75,6 +75,8 @@ router.get('/customer/new', function (req, res) {
   // true
 
   result.customer.id;
+
+  res.json(result);
   // e.g. 494019
 });
 });
