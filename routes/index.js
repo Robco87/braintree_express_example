@@ -69,8 +69,7 @@ router.get('/customer/new', function (req, res) {
     firstName: req.query.firstName,
     lastName: req.query.lastName,
     company: req.query.company,
-    email: req.query.email,
-    paymentMethodNonce: req.query.nonceFromTheClient
+    email: req.query.email
   }, function (err, result) {
   result.success;
   // true
