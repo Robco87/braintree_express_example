@@ -122,7 +122,13 @@ router.get('/paymentMethod/create', function (req, res) {
   gateway.paymentMethod.create({
     customerId: req.query.customerId,
     paymentMethodNonce: req.query.nonceFromTheClient,
-  }, function (err, result) { });
+  }, function (err, result) { 
+
+    result.success;
+    // true
+
+    res.json(result);
+  });
 
 });
 
