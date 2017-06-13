@@ -70,6 +70,7 @@ router.get('/customer/new', function (req, res) {
     lastName: req.query.lastName,
     company: req.query.company,
     email: req.query.email,
+    paymentMethodNonce: req.query.nonceFromTheClient
   }, function (err, result) {
   result.success;
   // true
@@ -97,12 +98,94 @@ gateway.customer.find(req.params.customerId, function(err, customer) {
 });
 
 
+router.get('/customer/update', function (req, res) {
+ 
+gateway.customer.update(req.query.customerId, {
+  paymentMethodNonce: req.query.nonceFromTheClient
+}, function (err, result) {
+
+  result.success;
+  // true
+
+  res.json(result);
+  // e.g. 494019
+});
+});
+
+
+/****************** Payment Method ******************/
 
 
 
+router.get('/paymentMethod/create', function (req, res) {
+ 
 
+  gateway.paymentMethod.create({
+    customerId: req.query.customerId,
+    paymentMethodNonce: req.query.nonceFromTheClient
+  }, function (err, result) { });
+
+});
+
+/****************** Merchant ************************/
+
+router.post('/merchant/new', function (req, res) {
+
+  var merchantAccountParams = req.body.merchantAccountParams;
+  gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
+
+  result.success;
+  // true
+
+  res.json(result);
+  });
+
+});
+
+
+router.get('/merchant/find', function (req, res) {
+
+
+  gateway.merchantAccount.find(req.body.merchantId, function (err, result) {
+
+  result.success;
+  // true
+
+  res.json(result);
+  });
+
+});
+
+
+router.post('/merchant/update', function (req, res) {
+
+  gateway.merchantAccount.update(req.body.merchantAccountId;, function (err, result) {
+
+  result.success;
+  // true
+
+  res.json(result);
+  });
+
+});
 
 /***************** transatcion **************************/
+
+router.get('/transaction/new', function (req, res) {
+
+
+
+  gateway.transaction.sale({
+    merchantAccountId: req.providerSubMerchantAccount,
+    amount: req.amount,
+    paymentMethodNonce: nonceFromTheClient,
+    serviceFeeAmount: req.serviceFeeAmount
+  }, function (err, result) {
+  });
+
+});
+
+
 
 router.get('/', function (req, res) {
   res.redirect('/checkouts/new');
