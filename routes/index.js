@@ -69,7 +69,7 @@ router.get('/customer/new', function (req, res) {
     firstName: req.query.firstName,
     lastName: req.query.lastName,
     company: req.query.company,
-    email: req.query.email
+    email: req.query.email,
   }, function (err, result) {
   result.success;
   // true
@@ -100,7 +100,7 @@ gateway.customer.find(req.params.customerId, function(err, customer) {
 router.get('/customer/update', function (req, res) {
  
 gateway.customer.update(req.query.customerId, {
-  paymentMethodNonce: req.query.nonceFromTheClient
+  paymentMethodNonce: req.query.nonceFromTheClient,
 }, function (err, result) {
 
   result.success;
@@ -121,7 +121,7 @@ router.get('/paymentMethod/create', function (req, res) {
 
   gateway.paymentMethod.create({
     customerId: req.query.customerId,
-    paymentMethodNonce: req.query.nonceFromTheClient
+    paymentMethodNonce: req.query.nonceFromTheClient,
   }, function (err, result) { });
 
 });
@@ -158,7 +158,7 @@ router.get('/merchant/find', function (req, res) {
 
 router.post('/merchant/update', function (req, res) {
 
-  gateway.merchantAccount.update(req.body.merchantAccountId;, function (err, result) {
+  gateway.merchantAccount.update(req.body.merchantAccountId, function (err, result) {
 
   result.success;
   // true
@@ -178,7 +178,7 @@ router.get('/transaction/new', function (req, res) {
     merchantAccountId: req.providerSubMerchantAccount,
     amount: req.amount,
     paymentMethodNonce: nonceFromTheClient,
-    serviceFeeAmount: req.serviceFeeAmount
+    serviceFeeAmount: req.serviceFeeAmount,
   }, function (err, result) {
   });
 
