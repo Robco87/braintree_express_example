@@ -222,10 +222,10 @@ router.get('/transaction/new', function (req, res) {
 
 
   gateway.transaction.sale({
-    merchantAccountId: req.providerSubMerchantAccount,
-    amount: req.amount,
-    paymentMethodNonce: nonceFromTheClient,
-    serviceFeeAmount: req.serviceFeeAmount,
+    merchantAccountId: req.query.providerSubMerchantAccount,
+    amount: req.query.amount,
+    paymentMethodToken: req.query.paymentMethodToken,
+    serviceFeeAmount: req.query.serviceFeeAmount
   }, function (err, result) {
   });
 
