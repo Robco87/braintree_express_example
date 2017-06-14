@@ -160,7 +160,7 @@ router.post('/merchant/new', function (req, res) {
 
   var merchantAccountParams = {
     individual: {
-      firstName: "Jane",
+      firstName: "approve_me",
       lastName: "Doe",
       email: "jane@14ladders.com",
       phone: "5553334444",
