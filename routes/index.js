@@ -179,8 +179,7 @@ router.post('/merchant/new', function (req, res) {
       routingNumber: bank_routing
     },
     tosAccepted: true,
-    masterMerchantAccountId: "aeiwaydevelopmentid",
-    id: merchant_id
+    masterMerchantAccountId: "aeiwaydevelopmentid"
   };
 
   gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
