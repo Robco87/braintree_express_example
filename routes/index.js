@@ -227,12 +227,14 @@ router.get('/transaction/new', function (req, res) {
     paymentMethodToken: req.query.paymentMethodToken,
     serviceFeeAmount: req.query.serviceFeeAmount
   }, function (err, result) {
+      if (err) {
+        res.json(err);
+      }
+      else{
 
-
-  result.success;
-  // true
-
-  result.json(result);
+       res.success;
+       res.json(result);
+      }
   });
 
 });
