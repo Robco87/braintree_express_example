@@ -136,7 +136,7 @@ router.get('/paymentMethod/create', function (req, res) {
 
 router.post('/merchant/new', function (req, res) {
 
-  var merchantAccountParams = req.body.merchantAccountParams;
+  var merchantAccountParams = req.body;
   gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
 
   result.success;
