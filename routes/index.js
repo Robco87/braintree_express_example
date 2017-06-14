@@ -148,7 +148,7 @@ router.post('/merchant/new', function (req, res) {
       else{
 
        result.success;
-       res.json(result);
+       result.json(result);
       }
   });
   */
@@ -228,11 +228,11 @@ router.get('/transaction/new', function (req, res) {
     serviceFeeAmount: req.query.serviceFeeAmount
   }, function (err, result) {
 
-    
+
   result.success;
   // true
 
-  res.json(result);
+  result.json(result);
   });
 
 });
