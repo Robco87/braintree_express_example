@@ -136,6 +136,7 @@ router.get('/paymentMethod/create', function (req, res) {
 
 router.post('/merchant/new', function (req, res) {
 
+/*
   var merchantAccountParams = req.body;
   //res.json(merchantAccountParams);
   
@@ -150,7 +151,41 @@ router.post('/merchant/new', function (req, res) {
        res.json(result);
       }
   });
-  
+  */
+
+
+  var merchant_id = "newsubmerchantid";//req.body.merchant_id;
+  var bank_account = "1123581321";//req.body.bank_account;
+  var bank_routing = "071101307";//req.body.bank_routing;
+
+  var merchantAccountParams = {
+    individual: {
+      firstName: "Jane",
+      lastName: "Doe",
+      email: "jane@14ladders.com",
+      phone: "5553334444",
+      dateOfBirth: "1981-11-19",
+      ssn: "456-45-4567",
+      address: {
+        streetAddress: "111 Main St",
+        locality: "Chicago",
+        region: "IL",
+        postalCode: "60622"
+      }
+    },
+    funding: {
+      destination: braintree.MerchantAccount.FundingDestination.Bank,
+      accountNumber: bank_account,
+      routingNumber: bank_routing
+    },
+    tosAccepted: true,
+    masterMerchantAccountId: "aeiwaydevelopmentid",
+    id: merchant_id
+  };
+
+  gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
+    res.json(result);
+  });
 
 });
 
