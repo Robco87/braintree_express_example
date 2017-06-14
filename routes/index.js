@@ -142,7 +142,7 @@ router.post('/merchant/new', function (req, res) {
   gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
 
       if (err) {
-        res.json(result);
+        res.json(err);
       }
       else{
 
