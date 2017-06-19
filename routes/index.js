@@ -132,6 +132,24 @@ router.get('/paymentMethod/create', function (req, res) {
 
 });
 
+
+
+
+router.get('/paymentMethod/find', function (req, res) {
+ 
+
+  gateway.paymentMethod.find({
+    token: req.query.paymentMethodId,
+  }, function (err, result) { 
+
+    result.success;
+    // true
+
+    res.json(result);
+  });
+
+});
+
 /****************** Merchant ************************/
 
 router.post('/merchant/new', function (req, res) {
