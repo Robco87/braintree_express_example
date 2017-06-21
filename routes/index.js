@@ -142,10 +142,14 @@ router.get('/paymentMethod/find', function (req, res) {
     token: req.query.paymentMethodId,
   }, function (err, result) { 
 
-    result.success;
-    // true
+    if (err) {
+        res.json(err);
+      }
+      else{
 
-    res.json(result);
+       res.success;
+       res.json(result);
+    }
   });
 
 });
