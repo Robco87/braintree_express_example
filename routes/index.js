@@ -135,7 +135,7 @@ router.get('/paymentMethod/create', function (req, res) {
 
 
 
-router.get('/paymentMethod/find', function (req, res) {
+router.get('/paymentMethod/get', function (req, res) {
  
 
  res.json(req);
