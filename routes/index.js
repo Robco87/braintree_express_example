@@ -134,11 +134,11 @@ router.get('/paymentMethod/create', function (req, res) {
 
 
 
-router.get('/paymentMethods/find', function (req, res) {
+router.post('/paymentMethods/find', function (req, res) {
  
 
   gateway.paymentMethod.find({
-    token: req.query.token,
+    token: req.body.payToken,
   }, function (err, result) { 
 
     result.success;
