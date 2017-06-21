@@ -136,6 +136,7 @@ router.get('/paymentMethod/create', function (req, res) {
 
 router.post('/paymentMethods/find', function (req, res) {
  
+ res.json(req);
 /*
   gateway.paymentMethod.find({
     token: req.body.payToken,
