@@ -85,7 +85,7 @@ router.get('/customer/new', function (req, res) {
 
 router.get('/customer/find', function (req, res) {
  
-gateway.customer.find(req.params.customerId, function(err, customer) {
+gateway.customer.find(req.query.customerId, function(err, customer) {
 
   result.success;
   // true
@@ -132,6 +132,22 @@ router.get('/paymentMethod/create', function (req, res) {
 
 });
 
+
+
+router.get('/paymentMethods/find', function (req, res) {
+ 
+
+  gateway.paymentMethod.find({
+    token: req.query.token,
+  }, function (err, result) { 
+
+    result.success;
+    // true
+
+    res.json(result);
+  });
+
+});
 
 
 
