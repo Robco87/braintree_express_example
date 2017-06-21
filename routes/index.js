@@ -138,6 +138,8 @@ router.get('/paymentMethod/create', function (req, res) {
 router.get('/paymentMethod/find', function (req, res) {
  
 
+ res.json(req);
+/*
   gateway.paymentMethod.find({
     token: req.query.paymentMethodId,
   }, function (err, result) { 
@@ -151,7 +153,7 @@ router.get('/paymentMethod/find', function (req, res) {
        res.json(result);
     }
   });
-
+*/
 });
 
 /****************** Merchant ************************/
