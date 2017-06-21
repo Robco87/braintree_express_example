@@ -138,9 +138,7 @@ router.post('/paymentMethods/find', function (req, res) {
  
  
 
-  gateway.paymentMethod.find({
-     req.body.payToken,
-  }, function (err, result) { 
+  gateway.paymentMethod.find( req.body.payToken, function (err, result) { 
 
     result.success;
     // true
