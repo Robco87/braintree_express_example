@@ -175,12 +175,17 @@ router.get('/paymentMethod/get', function (req, res) {
 
 router.get('/subscription/new', function (req, res) {
 
-  var result = Braintree_Subscription::create([
-    'paymentMethodToken' => req.query.token,
-    'planId' => '436w'
-  ]);
 
-  res.json(result);
+
+    gateway.subscription.create({
+      paymentMethodToken: req.query.token,
+      planId: "436w"
+    }, function (err, result) {
+
+      res.json(result);
+
+    });
+
 
 });
 
