@@ -171,6 +171,32 @@ router.get('/paymentMethod/get', function (req, res) {
 */
 });
 
+/****************** Subscription ********************/
+
+router.post('/subscription/new', function (req, res) {
+
+  $result = Braintree_Subscription::create([
+    'paymentMethodToken' => req.query.token,
+    'planId' => '436w'
+  ]);
+  
+  res.json(result);
+
+});
+
+
+router.post('/subscription/cancel', function (req, res) {
+
+  $result = Braintree_Subscription::create([
+    'paymentMethodToken' => req.query.token,
+    'planId' => '436w'
+  ]);
+
+  res.json(result);
+
+
+
+});
 /****************** Merchant ************************/
 
 router.post('/merchant/new', function (req, res) {
