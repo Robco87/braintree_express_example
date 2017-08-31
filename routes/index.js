@@ -239,10 +239,10 @@ router.post('/merchant/new', function (req, res) {
   var phonePram = req.body.individual.phone;
   var dobPram = req.body.individual.dateOfBirth;
   var ssnPram = req.body.individual.ssn;
-  var streetPram = req.body.address.streetAddress;
-  var cityPram = req.body.address.locality;
-  var statePram = req.body.address.region;
-  var zipPram = req.body.address.postalCode;
+  var streetPram = req.body.individual.address.streetAddress;
+  var cityPram = req.body.individual.address.locality;
+  var statePram = req.body.individual.address.region;
+  var zipPram = req.body.individual.address.postalCode;
 
     merchantAccountParams= {
         individual: {
