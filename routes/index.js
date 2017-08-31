@@ -224,22 +224,72 @@ router.post('/merchant/new', function (req, res) {
 
 
   var merchant_id = "newsubmerchantid";//req.body.merchant_id;
-  var bank_account = "1123581321";//req.body.bank_account;
-  var bank_routing = "071101307";//req.body.bank_routing;
+  var bank_account = req.body.funding.accountNumber;//"1123581321";//req.body.bank_account;
+  var bank_routing = req.body.funding.routingNumber;//"071101307";//req.body.bank_routing;
 
-  var merchantAccountParams = {
-    individual: {
-      firstName: "approve_me",
-      lastName: "Doe",
-      email: "jane@14ladders.com",
-      phone: "5553334444",
-      dateOfBirth: "1981-11-19",
-      ssn: "456-45-4567",
+
+  var merchantAccountParams;
+
+  if (req.body.individual) {
+
+
+  var firstNamePram = req.body.individual.firstName;
+  var lastNamePram = req.body.individual.lastName;
+  var emailPram = req.body.individual.email;
+  var phonePram = req.body.individual.phone;
+  var dobPram = req.body.individual.dateOfBirth;
+  var ssnPram = req.body.individual.ssn;
+  var streetPram = req.body.address.streetAddress;
+  var cityPram = req.body.address.locality;
+  var statePram = req.body.address.region;
+  var zipPram = req.body.address.postalCode;
+
+    merchantAccountParams= {
+        individual: {
+          firstName: firstNamePram,
+          lastName: lastNamePram,
+          email: emailPram,
+          phone: phonePram,
+          dateOfBirth: dobPram,
+          ssn: ssnPram,
+          address: {
+            streetAddress: streetPram,
+            locality: cityPram,
+            region: statePram,
+            postalCode: zipPram
+          }
+        },
+        funding: {
+          destination: braintree.MerchantAccount.FundingDestination.Bank,
+          accountNumber: bank_account,
+          routingNumber: bank_routing
+        },
+        tosAccepted: true,
+        masterMerchantAccountId: "aeiwaydevelopmentid"
+      };
+  }
+  else{
+   
+    var legalNamePram = req.body.business.legalName;
+    var dbaNamePram = req.body.business.dbaName;
+    var taxIdPram = req.body.business.taxId;
+    var streetAddressePram = req.body.business.address.streetAddress;
+    var localityPram = req.body.business.address.locality;
+    var regionPram = req.body.business.address.region;
+    var postalCodePram = req.body.business.address.postalCode;
+    
+
+
+    merchantAccountParams= {
+    bussiness: {
+      legalName: legalNamePram,
+      dbaName: dbaNamePram,
+      taxId: taxIdPram,
       address: {
-        streetAddress: "111 Main St",
-        locality: "Chicago",
-        region: "IL",
-        postalCode: "60622"
+        streetAddress: streetAddressePram,
+        locality: localityPram,
+        region: regionPram,
+        postalCode: postalCodePram
       }
     },
     funding: {
@@ -250,9 +300,22 @@ router.post('/merchant/new', function (req, res) {
     tosAccepted: true,
     masterMerchantAccountId: "aeiwaydevelopmentid"
   };
+  }
+
+  
+
+   
 
   gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
-    res.json(result);
+
+     if (err) {
+        res.json(err);
+      }
+      else{
+
+       res.success;
+       res.json(result);
+      }
   });
 
 });
