@@ -302,9 +302,9 @@ router.post('/merchant/new', function (req, res) {
   };
   }
 
-  
+  res.json(merchantAccountParams);
 
-   
+   /*
 
   gateway.merchantAccount.create(merchantAccountParams, function (err, result) {
 
@@ -317,7 +317,7 @@ router.post('/merchant/new', function (req, res) {
        res.json(result);
       }
   });
-
+*/
 });
 
 
