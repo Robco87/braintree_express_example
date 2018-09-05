@@ -55,6 +55,8 @@ router.get('/token', function (req, res) {
      response.success;
      // true
 
+     //test
+
      res.json(response);
   });
 });
